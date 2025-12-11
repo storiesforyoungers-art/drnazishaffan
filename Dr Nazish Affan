@@ -1,0 +1,57 @@
+import random
+
+# --- Daily Tips ---
+daily_tips = [
+    "Drink at least 6–8 glasses of water every day.",
+    "Add more whole grains like oats and multigrain atta to your meals.",
+    "Black raisins help with digestion and natural energy.",
+    "Avoid processed sugar; choose natural sweeteners instead.",
+    "Start your morning with a nutrient-rich breakfast.",
+    "Include seeds and nuts for healthy fats and minerals."
+]
+
+# --- Calorie Calculator ---
+def calorie_calculator():
+    try:
+        age = int(input("Enter your age: "))
+        weight = float(input("Enter your weight (kg): "))
+        activity = input("Activity level (low / medium / high): ").strip().lower()
+
+        if activity == "low":
+            factor = 28
+        elif activity == "medium":
+            factor = 33
+        elif activity == "high":
+            factor = 38
+        else:
+            print("Invalid activity level. Using medium.")
+            factor = 33
+
+        calories = weight * factor
+        print(f"\nRecommended Daily Calories: {calories:.0f} kcal\n")
+
+    except:
+        print("Invalid input. Please try again.\n")
+
+# --- Main Menu ---
+def menu():
+    while True:
+        print("\n=== Nourish Wellness Tool ===")
+        print("1. Get a Daily Nutrition Tip")
+        print("2. Calculate Daily Calorie Needs")
+        print("3. Exit")
+
+        choice = input("Choose an option (1, 2, 3): ")
+
+        if choice == "1":
+            print("\nYour Daily Tip:")
+            print(random.choice(daily_tips))
+        elif choice == "2":
+            calorie_calculator()
+        elif choice == "3":
+            print("Goodbye! Stay healthy!")
+            break
+        else:
+            print("Invalid choice. Try again.\n")
+
+menu()
